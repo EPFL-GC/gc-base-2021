@@ -1,0 +1,10 @@
+name: gc_course_env
+channels:
+  - conda-forge
+dependencies:
+  - pip
+  - pip:
+    - triangle
+  - igl
+  - matplotlib
+  - jupyterlab
