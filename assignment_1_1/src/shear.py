@@ -29,7 +29,7 @@ def shear_transformation(V, nu):
 
 def shear_equilibrium(V, F, x_csl):
     """
-    Computes the area of a given triangle mesh (V, F).
+    Shear the input mesh to make it equilibrium.
 
     Input:
     - V : np.array (|V|, 3)
