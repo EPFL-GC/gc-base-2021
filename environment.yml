@@ -8,3 +8,7 @@ dependencies:
   - igl
   - matplotlib
   - jupyterlab
+  - meshplot
+  - pytest
+  - pytest-html
+  - pytest-timeout
