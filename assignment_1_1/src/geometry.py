@@ -20,7 +20,7 @@ def compute_faces_area(V, F):
     """
     area = np.zeros(F.shape[0])
     
-    # HW.3.1.2 
+    # HW.1.3.3
     # enter your code here
 
     return area
@@ -42,7 +42,7 @@ def compute_mesh_area(V, F):
     """
     area = 0
 
-    # HW.3.1.2 
+    # HW.1.3.3 
     # enter your code here
 
     return area
@@ -64,7 +64,7 @@ def compute_faces_centroid(V, F):
     """
     cf = np.zeros((F.shape[0], 3))
 
-    # HW.3.1.3
+    # HW.1.3.4
     # enter your code here
 
     return cf
@@ -86,7 +86,7 @@ def compute_mesh_centroid(V, F):
     """
     mc = np.zeros(3)
 
-    # HW.3.1.3
+    # HW.1.3.4
     # enter your code here
 
     return mc
@@ -106,7 +106,7 @@ def compute_center_support_line(V):
     """
     x_csl = 0
 
-    # HW.3.1.4
+    # HW.1.3.5
     # enter your code here
 
     return x_csl
