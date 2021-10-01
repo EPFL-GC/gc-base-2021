@@ -21,7 +21,7 @@ def shear_transformation(V, nu):
     V1 = V.copy()
 
 
-    # HW.1.3.6
+    # HW1 1.3.6
     # enter your code here
 
     return V1
@@ -45,7 +45,7 @@ def shear_equilibrium(V, F, x_csl):
     """
     V1 = V.copy()
 
-    # HW.1.3.7
+    # HW1 1.3.7
     # enter your code here
 
     return V1
