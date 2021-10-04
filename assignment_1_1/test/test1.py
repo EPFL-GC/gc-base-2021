@@ -1,16 +1,18 @@
-# import pytest
-import pytest
 import json
+import os
 import sys
+
 import numpy as np
-sys.path.append('../')
-sys.path.append('../src')
-from src.geometry import *
-from src.shear import *
+import pytest
+
+sys.path.append(os.path.join(os.path.dirname(__file__), "..", "src"))
+
+from geometry import *
+from shear import *
 
 eps = 1E-6
 
-with open('test_data1.json', 'r') as infile:
+with open(os.path.join(os.path.dirname(__file__), "test_data1.json"), "r") as infile:
     homework_datas = json.load(infile)
 
 @pytest.mark.timeout(1)
