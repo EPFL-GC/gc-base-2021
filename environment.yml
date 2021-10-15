@@ -5,10 +5,13 @@ dependencies:
   - pip
   - pip:
     - triangle
+    - opencv-python
   - igl
   - matplotlib
   - jupyterlab
-  - meshplot
   - pytest
   - pytest-html
   - pytest-timeout
+  - matplotlib
+  - svgwrite
+  - meshplot
