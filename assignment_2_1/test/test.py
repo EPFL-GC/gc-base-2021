@@ -7,6 +7,7 @@ import numpy as np
 sys.path.append('../')
 sys.path.append('../src')
 from elasticsolid import *
+from eigendecomposition_metric import *
 eps = 1E-6
 
 with open('test_data1.json', 'r') as infile:
@@ -87,3 +88,11 @@ def test_pinning(data):
     es = ElasticSolid(np.array(v), np.array(t), pin_idx = np.array(pin_idx))
     assert np.linalg.norm(es.free_idx - free_idx_gt) < eps
     assert np.linalg.norm(es.pin_mask.astype(float) - np.array(pin_mask_gt).astype(float)) < eps
+
+@pytest.mark.timeout(0.5)
+@pytest.mark.parametrize("data", homework_datas[8])
+def test_eig(data):
+    F, eigvals_gt, eigvecs_gt = data
+    eigvals, eigvecs = compute_eigendecomposition_metric(np.array(F))
+    assert np.linalg.norm(eigvals - eigvals_gt) < eps
+    assert np.linalg.norm(abs(np.diagonal(np.einsum('ijk, ijl -> ikl', eigvecs, eigvecs_gt), axis1 = 1, axis2 = 2)) - 1) < eps
