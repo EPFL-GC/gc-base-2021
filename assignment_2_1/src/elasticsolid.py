@@ -141,4 +141,4 @@ class ElasticSolid(object):
         Input:
         - v_disp : displacement of the vertices of the mesh (#v, 3)
         '''
-        pass
+        self.update_def_shape(self.v_def + v_disp)
