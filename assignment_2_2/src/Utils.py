@@ -198,7 +198,7 @@ def equilibrium_convergence_report_BFGS(solid, v_init, n_steps, step_size, thres
 
 import matplotlib.pyplot as plt
 def fd_validation_ext(solid):
-    epsilons = np.logspace(-9,4,100)
+    epsilons = np.logspace(-9,-3,100)
     perturb_global = np.random.uniform(-1e-3, 1e-3, size=solid.v_def.shape)
     solid.displace(perturb_global)
     v_def = solid.v_def.copy()
@@ -225,7 +225,7 @@ def fd_validation_ext(solid):
     plt.show()
 
 def fd_validation_elastic(solid):
-    epsilons = np.logspace(-9,4,100)
+    epsilons = np.logspace(-9,-3,100)
     perturb_global = np.random.uniform(-1e-3, 1e-3, size=solid.v_def.shape)
     solid.displace(perturb_global)
     
