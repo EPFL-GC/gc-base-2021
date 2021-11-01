@@ -101,7 +101,7 @@ def test_energy_ext(data):
 
 @pytest.mark.timeout(0.5)
 @pytest.mark.parametrize("data", homework_datas[8])
-def test_forces_el(data):
+def test_forces_ext(data):
     etype, young, poisson, v, t, rho, pin_idx, force_mass, v_def, fext_gt, fvol_gt  = data
     if etype == "linear":
         ee = LinearElasticEnergy(young, poisson)
