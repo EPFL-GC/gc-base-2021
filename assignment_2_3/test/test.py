@@ -54,16 +54,16 @@ def test_force_differentials(data):
     
     assert np.linalg.norm(es.compute_force_differentials(np.array(dx)) - np.array(df_gt)) < eps
 
-@pytest.mark.timeout(0.5)
+@pytest.mark.timeout(1)
 @pytest.mark.parametrize("data", homework_datas[4])
-def test_linear_dE(data):
+def test_CG(data):
     A, RHS, dx_gt = data
     A = np.array(A)
     def LHS(dx_):
         return A@dx_
     assert np.linalg.norm(conjugate_gradient(LHS, np.array(RHS)) - np.array(dx_gt)) < eps
 
-@pytest.mark.timeout(0.5)
+@pytest.mark.timeout(1)
 @pytest.mark.parametrize("data", homework_datas[5])
 def test_lhs_rhs(data):
     etype, young, poisson, v, t, rho, pin_idx, force_mass, v_def, dx, lhsdx_gt, rhs_gt  = data
@@ -74,7 +74,8 @@ def test_lhs_rhs(data):
     
     es = ElasticSolid(np.array(v), np.array(t), ee, rho=rho, pin_idx=pin_idx, f_mass=np.array(force_mass))
     es.update_def_shape(np.array(v_def))
-    es.equilibrium_step()
+    es.equilibrium_step(max_l_iter=0)
+
     
     assert np.linalg.norm(es.LHS(np.array(dx)) - np.array(lhsdx_gt)) < eps
     assert np.linalg.norm(es.RHS - rhs_gt) < eps
