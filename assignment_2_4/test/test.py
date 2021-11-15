@@ -15,7 +15,7 @@ import json, pytest
 torch.set_default_dtype(torch.float64)
 eps = 1E-6
 
-with open('test_data4.json', 'r') as infile:
+with open('test_data4_beam.json', 'r') as infile:
     homework_datas = json.load(infile)
 
 @pytest.mark.timeout(2)
@@ -60,11 +60,11 @@ def test_set_params(data):
     young, poisson, v, t, vt_surf, rho, pin_idx, force_mass, v_rest, v_def, new_params, v_rest_gt, v_def_gt  = data
     ee = NeoHookeanElasticEnergy(young, poisson)
     
-    es = ElasticSolid(torch.tensor(v), torch.tensor(np.array(t), dtype=torch.int64), ee, rho=rho, pin_idx=torch.tensor(pin_idx, dtype=torch.int64), f_mass=torch.tensor(force_mass))
-    es.update_rest_shape(torch.tensor(v_rest))
+    es = ElasticSolid(torch.tensor(v_rest), torch.tensor(np.array(t), dtype=torch.int64), ee, rho=rho, pin_idx=torch.tensor(pin_idx, dtype=torch.int64), f_mass=torch.tensor(force_mass))
+    
     es.update_def_shape(torch.tensor(v_def))
     optimizer = ShapeOptimizer(es, torch.tensor(vt_surf), weight_reg=0.)
-    optimizer.set_params(torch.tensor(new_params), verbose = True)
+    optimizer.set_params(torch.tensor(new_params))
     assert torch.linalg.norm(optimizer.solid.v_rest - torch.tensor(v_rest_gt)) < eps
     assert torch.linalg.norm(optimizer.solid.v_def - torch.tensor(v_def_gt)) < eps
 
@@ -74,11 +74,11 @@ def test_line_search(data):
 
     ee = NeoHookeanElasticEnergy(young, poisson)
     
-    es = ElasticSolid(torch.tensor(v), torch.tensor(np.array(t), dtype=torch.int64), ee, rho=rho, pin_idx=torch.tensor(pin_idx, dtype=torch.int64), f_mass=torch.tensor(force_mass))
-    es.update_rest_shape(torch.tensor(v_rest))
+    es = ElasticSolid(torch.tensor(v_rest), torch.tensor(np.array(t), dtype=torch.int64), ee, rho=rho, pin_idx=torch.tensor(pin_idx, dtype=torch.int64), f_mass=torch.tensor(force_mass))
+    # es.update_rest_shape(torch.tensor(v_rest))
     es.update_def_shape(torch.tensor(v_def))
     optimizer = ShapeOptimizer(es, torch.tensor(vt_surf), weight_reg=0.)
-    obj, l_iter, success = optimizer.line_search_step(1e-4, 10)
+    obj, l_iter, success = optimizer.line_search_step(1e-2, 10)
     assert torch.linalg.norm(obj - torch.tensor(obj_gt)) < eps
     assert l_iter == l_iter_gt
     assert success == success_gt
