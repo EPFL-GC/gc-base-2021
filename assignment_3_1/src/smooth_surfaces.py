@@ -203,10 +203,12 @@ def compute_second_fundamental_form(x_uu, x_uv, x_vv, n):
     Try to vectorize this function.
 
     Parameters:
-    - x_u : np.array (n, 3)
-        The i-th row contains the (x,y,z) coordinates of the vector x_u(p_i).
-    - x_v : np.array (n, 3)
-        The i-th row contains the (x,y,z) coordinates of the vector x_v(p_i).
+    - x_uu : np.array (n, 3)
+         The i-th row contains the (x,y,z) coordinates of the vector x_uu(p_i).
+    - x_uv : np.array (n, 3)
+         The i-th row contains the (x,y,z) coordinates of the vector x_uv(p_i).
+    - x_vv : np.array (n, 3)
+         The i-th row contains the (x,y,z) coordinates of the vector x_vv(p_i).
     - n : np.array (n, 3)
         The surface normals.
         The i-th row contains the (x,y,z) coordinates of the vector n(p_i).

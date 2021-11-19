@@ -66,5 +66,7 @@ def bgr_color(values):
     lut[:, 2] = B / 255
     lut[-1, :] = [255, 0, 255]
     max_val = np.max(np.abs(values))
+    if max_val == 0:
+         max_val = 1
     val = np.round(val / max_val * 127).astype('i') + 127
     return lut[val]

@@ -259,8 +259,7 @@ def test_paraboloid_asymptotic_direction(data):
     e2 = np.array(e2, dtype=float)
     a_1_student, a_2_student = compute_asymptotic_directions(k1, k2, e1, e2)
 
-    assert np.linalg.norm(a_1_student - a1) < eps
-    assert np.linalg.norm(a_2_student - a2) < eps
+    assert (np.linalg.norm(a_1_student - a1) < eps and np.linalg.norm(a_2_student - a2) < eps) or (np.linalg.norm(a_1_student - a2) < eps and np.linalg.norm(a_2_student - a1) < eps)
 
 @pytest.mark.timeout(0.5)
 @pytest.mark.parametrize("data", homework_datas[17])
@@ -276,8 +275,7 @@ def test_torus_asymptotic_direction(data):
 
     a_1_student, a_2_student = compute_asymptotic_directions(k1, k2, e1, e2)
 
-    assert np.linalg.norm(a_1_student - a1) < eps
-    assert np.linalg.norm(a_2_student - a2) < eps
+    assert (np.linalg.norm(a_1_student - a1) < eps and np.linalg.norm(a_2_student - a2) < eps) or (np.linalg.norm(a_1_student - a2) < eps and np.linalg.norm(a_2_student - a1) < eps)
 
 
 ##############################
