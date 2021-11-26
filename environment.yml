@@ -6,6 +6,7 @@ dependencies:
   - pip:
     - triangle
     - opencv-python
+    - gmsh
   - igl
   - matplotlib
   - jupyterlab
@@ -15,4 +16,3 @@ dependencies:
   - matplotlib
   - svgwrite
   - meshplot
-  - pytorch==1.10
