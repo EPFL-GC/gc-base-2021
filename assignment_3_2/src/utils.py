@@ -56,8 +56,8 @@ def remesh(input_name, output_name, mesh_size = 0.03):
     igl.write_obj(output_name, vr, fr.astype('int64'))
 
 
-def get_diverging_colors(values):
-    max_val = np.max(np.abs(values))
+def get_diverging_colors(values, percentile = 95):
+    max_val = np.percentile(np.abs(values), percentile)
     return(cmap(values / max_val * 0.5 * -1 + 0.5)[:, :3])
 
 def plot_directions(x, F, d_1, d_2, scale=0.1):
