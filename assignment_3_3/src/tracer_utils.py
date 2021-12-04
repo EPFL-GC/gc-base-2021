@@ -242,7 +242,7 @@ def intersection_event(a_orig, a_dir, b_orig, b_dir, eps=1e-6):
         The parameter on segment B where the intersection occurred.
     - E  : int
         Indicator for the type of intersection event. 
-        Returns 0 if the intersection occurred within the domain [0,1] of both segments. 
+        Returns 0 if the intersection occurred within the domain [0,1] of one segment. 
         Returns 1 if the intersection occured outside the domain of at least one the segments.
         Returns 2 for collinearity.
     '''
