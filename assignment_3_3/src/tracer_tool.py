@@ -117,7 +117,7 @@ class AsymptoticTracer:
                         if local_idx<=count-2:
                             vecB = tree.data[path_indexesB[local_idx+1]] - origB
                             t, u, inter = intersection_event(origA, vecA, origB, vecB)
-                            if inter==1 and t>=0 and t<=1 and u>=0 and u<=1:
+                            if inter==0 and t>=0 and t<=1 and u>=0 and u<=1:
                                 # Store edge index and the parameter where the intersection occured. 
                                 p = origA + vecA * t
 
@@ -140,7 +140,7 @@ class AsymptoticTracer:
                         if local_idx >= 1:
                             vecB = tree.data[path_indexesB[local_idx-1]] - origB
                             t, u, inter = intersection_event(origA, vecA, origB, vecB)
-                            if inter==1 and t>=0 and t<=1 and u>=0 and u<=1:
+                            if inter==0 and t>=0 and t<=1 and u>=0 and u<=1:
                                 # Store edge index and the parameter where the intersection occured.
                                 p = origA + vecA * t
 
